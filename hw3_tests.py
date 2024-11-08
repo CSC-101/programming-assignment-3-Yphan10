@@ -185,70 +185,84 @@ class TestCases(unittest.TestCase):
 
     # Part 1: Test for population_total
     def test_population_total(self):
+        # Verifying the total population value for the full dataset
         self.assertEqual(hw3.population_total(self.counties), 318857056)
 
     # Part 2: Test for filter_by_state
     def test_filter_by_state(self):
+        # Verifying that the filtered counties for 'CA' (California) returns the correct number of counties
         result = hw3.filter_by_state(self.counties, 'CA')
         self.assertEqual(len(result), 58)
 
     # Part 3: Test for population_by_education
     def test_population_by_education(self):
+        # Verifying that the function returns a float when calculating population by education level
         result = hw3.population_by_education(self.small_counties, "Bachelor's Degree or Higher")
         self.assertIsInstance(result, float)
 
     # Part 3: Test for population_by_ethnicity
     def test_population_by_ethnicity(self):
+        # Verifying that the function returns a float when calculating population by ethnicity
         result = hw3.population_by_ethnicity(self.small_counties, 'Asian Alone')
         self.assertIsInstance(result, float)
 
     # Part 3: Test for population_below_poverty_level
     def test_population_below_poverty_level(self):
+        # Verifying that the function returns a float when calculating population below the poverty level
         result = hw3.population_below_poverty_level(self.small_counties)
         self.assertIsInstance(result, float)
 
     # Part 4: Test for percent_by_education
     def test_percent_by_education(self):
+        # Verifying that the function returns a float when calculating percentage by education level
         result = hw3.percent_by_education(self.small_counties, "Bachelor's Degree or Higher")
         self.assertIsInstance(result, float)
 
     # Part 4: Test for percent_by_ethnicity
     def test_percent_by_ethnicity(self):
+        # Verifying that the function returns a float when calculating percentage by ethnicity
         result = hw3.percent_by_ethnicity(self.small_counties, 'Asian Alone')
         self.assertIsInstance(result, float)
 
     # Part 4: Test for percent_below_poverty_level
     def test_percent_below_poverty_level(self):
+        # Verifying that the function returns a float when calculating percentage below the poverty level
         result = hw3.percent_below_poverty_level(self.small_counties)
         self.assertIsInstance(result, float)
 
     # Part 5: Test for education_greater_than
     def test_education_greater_than(self):
+        # Verifying that the filtered counties have more than the given percentage of Bachelor’s Degree holders
         result = hw3.education_greater_than(self.small_counties, "Bachelor's Degree or Higher", 30)
         self.assertTrue(all(county.education["Bachelor's Degree or Higher"] > 30 for county in result))
 
     # Part 5: Test for education_less_than
     def test_education_less_than(self):
+        # Verifying that the filtered counties have less than the given percentage of Bachelor’s Degree holders
         result = hw3.education_less_than(self.small_counties, "Bachelor's Degree or Higher", 20)
         self.assertTrue(all(county.education["Bachelor's Degree or Higher"] < 20 for county in result))
 
     # Part 5: Test for ethnicity_greater_than
     def test_ethnicity_greater_than(self):
+        # Verifying that the filtered counties have more than the given percentage of a specific ethnicity
         result = hw3.ethnicity_greater_than(self.small_counties, 'Asian Alone', 10)
         self.assertTrue(all(county.ethnicities['Asian Alone'] > 10 for county in result))
 
     # Part 5: Test for ethnicity_less_than
     def test_ethnicity_less_than(self):
+        # Verifying that the filtered counties have less than the given percentage of a specific ethnicity
         result = hw3.ethnicity_less_than(self.small_counties, 'Asian Alone', 2)
         self.assertTrue(all(county.ethnicities['Asian Alone'] < 2 for county in result))
 
     # Part 5: Test for below_poverty_level_greater_than
     def test_below_poverty_level_greater_than(self):
+        # Verifying that the filtered counties have more than the given percentage of people below the poverty level
         result = hw3.below_poverty_level_greater_than(self.small_counties, 15)
         self.assertTrue(all(county.income['Persons Below Poverty Level'] > 15 for county in result))
 
     # Part 5: Test for below_poverty_level_less_than
     def test_below_poverty_level_less_than(self):
+        # Verifying that the filtered counties have less than the given percentage of people below the poverty level
         result = hw3.below_poverty_level_less_than(self.small_counties, 10)
         self.assertTrue(all(county.income['Persons Below Poverty Level'] < 10 for county in result))
 # Run the tests
